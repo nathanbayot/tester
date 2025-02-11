@@ -15,7 +15,7 @@ def pick():
         print("You guessed it wrong, try again")
         tries += 1
         pick()
-    if pick_number == random_number:
+    elif pick_number == random_number:
         print("You guessed it right!")
         print(f"you guessed {tries} times")
         retry()
