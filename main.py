@@ -1,21 +1,30 @@
-print("whats up")
-print("im nathan")
-nathan = input("whats your name")
-if nathan == "cool":
-    print("nice")
-print("")
-print("I want to play football")
-print("do you want to play")
-try:
-    play_football = int(input("1 for yes and 0 for no"))
-except ValueError:
-    print("only numbers")
-    play_football = int(input("1 for yes and 0 for no"))
+import random
 
-if play_football > 1:
-    print("try again")
-    play_football = int(input("1 for yes and 0 for no"))
-if play_football == 1:
-    print("lets play")
-elif play_football == 0:
-    print("sad for you")
+random_number = random.randint(1, 20)
+
+
+def pick():
+    tries = 0
+    pick_number = int(input("pick a number from 1 to 20"))
+    tries += 1
+    if pick_number > 20 or pick_number < 1:
+        print("Guess from 1 - 20")
+        pick()
+    elif pick_number != random_number:
+        print("You guessed it wrong, try again")
+        pick()
+    if pick_number == random_number:
+        print("You guessed it right!")
+        print(f"you guessed {tries} times")
+        retry()
+
+
+def retry():
+    try_again = int(input("would you like to try again? 1 for yes, anything other number for no"))
+    if try_again == 1:
+        pick()
+    if try_again != 1:
+        print("good game")
+
+
+pick()
